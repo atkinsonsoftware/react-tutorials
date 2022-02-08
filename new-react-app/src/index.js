@@ -46,6 +46,14 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
+      var allSquares = document.getElementsByClassName('square');
+      const winningArray = calculateWinningSquares(this.state.squares);
+      for (var i = 0; i < winningArray.length; i++) {
+         var winnerIndex = winningArray[i];
+         if (winnerIndex < allSquares.length) {
+           allSquares[winningArray[i]].style.backgroundColor = 'green';
+         }
+      }
       status = "Winner: " + winner;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
