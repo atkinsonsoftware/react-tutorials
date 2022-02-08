@@ -111,6 +111,15 @@ function calculateWinner(squares) {
   return null;
 }
 
+function calculateWinningSquares(squares) {
+  for (let i = 0; i < winningLines.length; i++) {
+    const [a, b, c] = winningLines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return winningLines[i];
+    }
+  }
+  return null;
+}
 // ========================================
 
 ReactDOM.render(
