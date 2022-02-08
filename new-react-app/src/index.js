@@ -46,6 +46,14 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
+      var allSquares = document.getElementsByClassName('square');
+      const winningArray = calculateWinningSquares(this.state.squares);
+      for (var i = 0; i < winningArray.length; i++) {
+         var winnerIndex = winningArray[i];
+         if (winnerIndex < allSquares.length) {
+           allSquares[winningArray[i]].style.backgroundColor = 'green';
+         }
+      }
       status = "Winner: " + winner;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -90,8 +98,7 @@ class Game extends React.Component {
   }
 }
 
-function calculateWinner(squares) {
-  const lines = [
+const winningLines = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -100,9 +107,11 @@ function calculateWinner(squares) {
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+];
+
+function calculateWinner(squares) {
+  for (let i = 0; i < winningLines.length; i++) {
+    const [a, b, c] = winningLines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
@@ -110,6 +119,15 @@ function calculateWinner(squares) {
   return null;
 }
 
+function calculateWinningSquares(squares) {
+  for (let i = 0; i < winningLines.length; i++) {
+    const [a, b, c] = winningLines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return winningLines[i];
+    }
+  }
+  return null;
+}
 // ========================================
 
 ReactDOM.render(
