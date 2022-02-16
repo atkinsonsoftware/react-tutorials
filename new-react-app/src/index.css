@@ -6,6 +6,11 @@ ol, ul {
   padding-inline-start: 0px;
 }
 
+.board-row: {
+  margin: auto;
+  width: 100px;
+}
+
 .board-row:after {
   clear: both;
   content: "";
