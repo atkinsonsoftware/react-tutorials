@@ -89,6 +89,10 @@ class Game extends React.Component {
     });
   }
 
+  restartGame() {
+    /* TODO: Implement restart */
+  }
+
  render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -134,6 +138,7 @@ class Game extends React.Component {
 <div className="game-info">
           <div>{status}</div>
           <ul style={{listStyleType:"none"}}>{moves}</ul>
+          <button onClick={() => this.restartGame()}>Restart Game</button>
         </div>
       </div>
     );
