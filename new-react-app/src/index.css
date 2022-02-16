@@ -3,7 +3,7 @@ body {
 }
 
 ol, ul {
-  padding-left: 30px;
+  padding-inline-start: 0px;
 }
 
 .board-row:after {
